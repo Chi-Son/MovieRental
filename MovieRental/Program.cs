@@ -4,9 +4,7 @@
     {
         static void Main()
         {
-            MovieRentalSystem movieRentalSystem = new MovieRentalSystem();
-            movieRentalSystem.SignIn();
-
+            MovieRentalSystem.SignIn();
         }
     }
 }

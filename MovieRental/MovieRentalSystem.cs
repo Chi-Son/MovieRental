@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-class MovieRentalSystem
+static class MovieRentalSystem
 {
-    private UserManager userManager = new UserManager();
-    public void Menu()
+    private static UserManager userManager = new UserManager();
+    public static void Menu()
     {
         MovieDisplay movie = new MovieDisplay();
         Console.WriteLine("Press 1 to see all movies");
@@ -39,7 +39,7 @@ class MovieRentalSystem
             }
         }
     }
-    public void SignIn()
+    public static void SignIn()
     {
         Console.WriteLine("----  Movie Rental Console App ----");
         Console.WriteLine("Plese enter username:");
@@ -51,8 +51,7 @@ class MovieRentalSystem
         {
             if (CheckLogin.Role == "Admin")
             {
-                MovieRentalSystem movieRentalSystem = new MovieRentalSystem();
-                movieRentalSystem.Menu();
+                MovieRentalSystem.Menu();
             }
             else { }
         }
