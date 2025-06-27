@@ -17,7 +17,7 @@ static class MovieRentalSystem
         string n = Console.ReadLine();
         while (n != "1")
         {
-            Console.WriteLine("Press please againt");
+            Console.WriteLine("Press number in the screen please");
             n = Console.ReadLine();
         }
         MovieDisplay.AllMovies();

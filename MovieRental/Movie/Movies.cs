@@ -16,7 +16,7 @@ class Movie
 
     public static void LoadMoviesFromTxt()
     {
-        string filepath = "Movies.txt";
+        string filepath = "Data/Movies.txt";
         foreach (var line in File.ReadAllLines(filepath))
         {
             var parts = line.Split('|');
