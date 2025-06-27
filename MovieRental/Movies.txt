@@ -1,0 +1,4 @@
+1|Friends|3.9|true
+2|How i meet your mother|2.88|false
+3|The Fall of the House of Usher|4.34|false
+4|Zodiac|2.16|false

@@ -12,43 +12,51 @@ class Movie
     public string Title { get; set; }
     public double RentPrice { get; set; }
     public bool RentStatus { get; set; }
+    public static List<Movie> Movies { get; set; } = new List<Movie>();
+
+    public static void LoadMoviesFromTxt()
+    {
+        string filepath = "Movies.txt";
+        foreach (var line in File.ReadAllLines(filepath))
+        {
+            var parts = line.Split('|');
+            if (parts.Length == 4)
+            {
+                Movie movie = new Movie
+                {
+                    MovieId = int.Parse(parts[0]),
+                    Title = parts[1],
+                    RentPrice = double.Parse(parts[2]),
+                    RentStatus = bool.Parse(parts[3])
+                };
+                Movies.Add(movie);
+            }
+        }
+    }
     public void Display()
     {
-        Console.WriteLine("  Title: " + Title);
-        Console.WriteLine("  Rent Price: " + RentPrice);
-        if (RentStatus== true) {
-            Console.WriteLine("  Rent Status: Rented " );
-        }
-        else
-        {
-            Console.WriteLine("  Rent Status: Available");
-        }
+        Console.WriteLine($"  Title: {Title}" );
+        Console.WriteLine($"  Rent Price: {RentPrice}" );
+        Console.WriteLine($"  Rent Status: {(RentStatus ? "Rented" : "Available")}");
+
     }
 
 }
-class MovieDisplay
+static class MovieDisplay
 {
-    public List<Movie> Movies { get; set; } = new List<Movie>
-    {
-        new Movie { MovieId = 1, Title = "Friends", RentPrice = 3.9, RentStatus =true },
-        new Movie { MovieId = 2, Title = "How i meet your mother", RentPrice = 2.88, RentStatus = false },
-        new Movie { MovieId = 3, Title = "The Fall of the House of Usher", RentPrice = 4.34, RentStatus = false },
-        new Movie { MovieId = 4, Title = "Zodiac", RentPrice = 2.16, RentStatus = false }
-    };
-
-    public void AllMovies()
-    {
+    public static void AllMovies()
+    {   
         int nums = 1;
-        foreach (var movie in Movies)
+        foreach (var movie in Movie.Movies)
         {
             Console.WriteLine("---Movie No." + nums + "---");
             movie.Display();
             nums++;
         }
     }
-    public void MovieById(int id)
+    public static void MovieById(int id)
     {
-        foreach (var movie in Movies)
+        foreach (var movie in Movie.Movies)
         {
             if (movie.MovieId == id)
             {

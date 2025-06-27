@@ -4,6 +4,7 @@
     {
         static void Main()
         {
+            Movie.LoadMoviesFromTxt();
             MovieRentalSystem.SignIn();
         }
     }

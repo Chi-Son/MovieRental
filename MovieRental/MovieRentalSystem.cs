@@ -7,27 +7,34 @@ using System.Threading.Tasks;
 static class MovieRentalSystem
 {
     private static UserManager userManager = new UserManager();
-    public static void Menu()
+    public static void CustomerMenu()
     {
-        MovieDisplay movie = new MovieDisplay();
-        Console.WriteLine("Press 1 to see all movies");
+        Console.WriteLine("---0--- Menu --0--");
+        Console.WriteLine("1. List Movies ");
+        Console.WriteLine("2. UserInfo ");
+        Console.WriteLine("3. Logout");
+        Console.WriteLine("---0--- Menu --0--");
         string n = Console.ReadLine();
         while (n != "1")
         {
-            Console.WriteLine("Press 1 please");
+            Console.WriteLine("Press please againt");
             n = Console.ReadLine();
         }
-        movie.AllMovies();
+        MovieDisplay.AllMovies();
+
+
+
+
         Console.WriteLine("Choose movie u like");
         bool found = false;
         while (!found)
         {
             string id = Console.ReadLine();
-            foreach (var m in movie.Movies)
+            foreach (var m in Movie.Movies)
             {
                 if (id == (m.MovieId).ToString())
                 {
-                    movie.MovieById(int.Parse(id));
+                    MovieDisplay.MovieById(int.Parse(id));
                     found = true;
                     break;
                 }
@@ -51,9 +58,9 @@ static class MovieRentalSystem
         {
             if (CheckLogin.Role == "Admin")
             {
-                MovieRentalSystem.Menu();
+                MovieRentalSystem.CustomerMenu();
             }
-            else { }
+            else { MovieRentalSystem.CustomerMenu(); }
         }
         else 
         { 
